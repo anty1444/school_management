@@ -1,6 +1,10 @@
-{% extends "base.html" %}
+{% extends 'layout.html' %}
 
 {% block content %}
-<h2>Student Dashboard</h2>
-<p>Welcome, {{ name }}! Here you can view your assignments and grades.</p>
+<h2>Welcome, {{ name }}</h2>
+<p>Here are your upcoming assignments:</p>
+<ul>
+    <li>Math Assignment 1 - Due Dec 20</li>
+    <li>History Essay - Due Dec 25</li>
+</ul>
 {% endblock %}

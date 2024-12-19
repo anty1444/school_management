@@ -1,6 +1,11 @@
-{% extends "base.html" %}
+{% extends 'layout.html' %}
 
 {% block content %}
-<h2>Teacher Dashboard</h2>
-<p>Welcome, {{ name }}! Here you can manage your classes and assignments.</p>
+<h2>Welcome, {{ name }}</h2>
+<p>Here are your classes:</p>
+<ul>
+    <li>Math 101</li>
+    <li>History 202</li>
+</ul>
+<a href="#" class="btn btn-success">Create Assignment</a>
 {% endblock %}

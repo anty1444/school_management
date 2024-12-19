@@ -1,6 +1,10 @@
-{% extends "base.html" %}
+{% extends 'layout.html' %}
 
 {% block content %}
-<h2>Parent Dashboard</h2>
-<p>Welcome, {{ name }}! Here you can track your child’s progress.</p>
+<h2>Welcome, {{ name }}</h2>
+<p>Monitor your child’s progress:</p>
+<ul>
+    <li>Child Name: John Doe</li>
+    <li>Grades: A, B+</li>
+</ul>
 {% endblock %}

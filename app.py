@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
-import os
-from urllib.parse import quote as url_quote  # Fix for deprecated Werkzeug import
-
+from urllib.parse import quote as url_quote
 # Initialize the Flask app
 app = Flask(__name__)
 
@@ -155,3 +152,65 @@ with app.test_request_context():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    if 'user_id' not in session:
+        flash('You must be logged in to access your profile.', 'danger')
+        return redirect(url_for('login'))
+
+    user = User.query.get(session['user_id'])
+
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # Update user details
+        user.name = name
+        user.email = email
+        if password:
+            user.password = generate_password_hash(password, method='sha256')
+        db.session.commit()
+        flash('Profile updated successfully!', 'success')
+
+    return render_template('profile.html', user=user)
+class Assignment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(150), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    due_date = db.Column(db.Date, nullable=False)
+    file_path = db.Column(db.String(200), nullable=True)
+    teacher_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+from werkzeug.utils import secure_filename
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if 'user_role' not in session or session['user_role'] != 'teacher':
+        flash('Only teachers can upload assignments.', 'danger')
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        title = request.form.get('title')
+        description = request.form.get('description')
+        due_date = request.form.get('due_date')
+        file = request.files['file']
+
+        if file:
+            filename = secure_filename(file.filename)
+            file_path = os.path.join('static/uploads', filename)
+            file.save(file_path)
+
+            new_assignment = Assignment(
+                title=title,
+                description=description,
+                due_date=due_date,
+                file_path=file_path,
+                teacher_id=session['user_id']
+            )
+            db.session.add(new_assignment)
+            db.session.commit()
+            flash('Assignment uploaded successfully!', 'success')
+            return redirect(url_for('teacher_dashboard'))
+
+    return render_template('upload.html')
