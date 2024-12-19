@@ -1,9 +1,17 @@
-{% extends "base.html" %}
+{% extends 'layout.html' %}
 
 {% block content %}
-<div>
-    <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Welcome Banner" style="width: 100%; max-height: 300px; object-fit: cover;">
+<div class="container text-center">
+    <h1>Welcome to School Management</h1>
+    <p>
+        At School Management, we are transforming how schools, students, and parents stay connected. 
+        Our platform simplifies collaboration, enhances communication, and ensures that education remains at the forefront 
+        of every interaction. From managing assignments to monitoring progress, we've got it all covered.
+    </p>
+    <p>
+        Whether you're a student looking to excel, a teacher striving to inspire, or a parent wanting to stay informed, 
+        School Management is here for you. Join us today and experience the future of education.
+    </p>
+    <a href="/register" class="btn btn-primary">Get Started</a>
 </div>
-<h2>Welcome to the School Management System!</h2>
-<p>This platform connects students, teachers, and parents for a better learning experience.</p>
 {% endblock %}
