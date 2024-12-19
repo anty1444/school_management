@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Welcome Banner" style="width: 100%; max-height: 300px; object-fit: cover;">
+</div>
+<h2>Welcome to the School Management System!</h2>
+<p>This platform connects students, teachers, and parents for a better learning experience.</p>
+{% endblock %}
