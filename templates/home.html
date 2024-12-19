@@ -1,17 +1,32 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="container text-center">
+<div class="container text-center mt-5">
     <h1>Welcome to School Management</h1>
+    <p class="lead">
+        The COVID-19 pandemic changed the way we live, learn, and connect. When schools around the world closed their doors, 
+        online learning became more important than ever. School Management was created to ensure that education continues seamlessly, 
+        no matter the challenges we face.
+    </p>
+    <div class="my-4">
+        <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Online Learning Banner" class="img-fluid rounded" style="max-height: 400px;">
+    </div>
     <p>
-        At School Management, we are transforming how schools, students, and parents stay connected. 
-        Our platform simplifies collaboration, enhances communication, and ensures that education remains at the forefront 
-        of every interaction. From managing assignments to monitoring progress, we've got it all covered.
+        During the global crisis, schools turned to technology to bridge the gap and provide uninterrupted education. 
+        Our platform is built with that mission in mind: to make learning accessible, flexible, and engaging for students, teachers, and parents.
     </p>
     <p>
-        Whether you're a student looking to excel, a teacher striving to inspire, or a parent wanting to stay informed, 
-        School Management is here for you. Join us today and experience the future of education.
+        With dedicated portals for students, teachers, and parents, School Management brings everyone together in a collaborative environment. 
+        Teachers can manage lessons and track progress, students can access materials and assignments, and parents can stay updated with 
+        real-time reports and notifications.
     </p>
-    <a href="/register" class="btn btn-primary">Get Started</a>
+    <p>
+        The future of education is here, and it’s online. Join us in embracing a world where education transcends physical boundaries 
+        and empowers learners everywhere. Together, we can redefine learning and make it better for generations to come.
+    </p>
+    <p>
+        Are you ready to be part of this educational revolution? Sign up now and take the first step toward a smarter, more connected future.
+    </p>
+    <a href="/register" class="btn btn-primary btn-lg">Get Started</a>
 </div>
 {% endblock %}
