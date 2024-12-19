@@ -1,6 +1,22 @@
-{% extends "base.html" %}
+{% extends 'layout.html' %}
 
 {% block content %}
-<h2>Support</h2>
-<p>If you have any questions or need help, please contact our support team.</p>
+<div class="container">
+    <h1>Support</h1>
+    <p>
+        Need help? Our support team is here to assist you every step of the way. Whether you’re having trouble accessing 
+        your account, navigating the platform, or understanding your role, we’ve got you covered.
+    </p>
+    <h2>Common Issues</h2>
+    <ul>
+        <li>Forgot your password? <a href="/reset-password">Reset it here</a>.</li>
+        <li>Having trouble logging in? Check your email and password combination.</li>
+        <li>Need technical support? Contact us using the details below.</li>
+    </ul>
+    <h2>Contact Support</h2>
+    <p>
+        Email us at <a href="mailto:support@schoolmanagement.com">support@schoolmanagement.com</a> 
+        or call our hotline at +1 (123) 456-7899.
+    </p>
+</div>
 {% endblock %}
