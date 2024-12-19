@@ -8,20 +8,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
     <header class="bg-light py-3">
-        <div class="container d-flex align-items-center">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="height: 50px; margin-right: 15px;">
-            <h1 class="h5 m-0">School Management</h1>
-        </div>
-    </header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="height: 50px; margin-right: 15px;">
+                <h1 class="h5 m-0">School Management</h1>
+            </div>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/actualities">Actualities</a>
                     </li>
@@ -41,9 +48,13 @@
             </div>
         </div>
     </nav>
+
+    <!-- Main Content -->
     <main class="container mt-4">
         {% block content %}{% endblock %}
     </main>
+
+    <!-- Footer -->
     <footer class="text-center mt-4">
         <p>&copy; 2024 School Management. All rights reserved.</p>
     </footer>
