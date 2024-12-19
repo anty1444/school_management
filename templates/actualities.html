@@ -1,32 +1,50 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="container">
-    <h1>Latest News & Updates</h1>
-    <p>
-        Stay up-to-date with the latest happenings at our school. From academic milestones to community events, 
-        this is your go-to space for all things current.
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Latest News and Updates</h1>
+    <p class="text-center mb-5">
+        Stay up-to-date with the latest happenings and updates in the educational world. Here are the most recent 
+        developments and stories.
     </p>
-    <div>
-        <h3>Math Olympiad Champions</h3>
-        <p>
-            Congratulations to our students for their exceptional performance in the regional Math Olympiad! 
-            Their dedication and hard work have brought pride to our school community.
-        </p>
-    </div>
-    <div>
-        <h3>Library Renovation Completed</h3>
-        <p>
-            We’re excited to announce that our library renovation is now complete. Visit us to explore the new 
-            reading areas and the latest collection of books and digital resources.
-        </p>
-    </div>
-    <div>
-        <h3>Upcoming Science Fair</h3>
-        <p>
-            Mark your calendars for the annual Science Fair on March 5th. Students are encouraged to showcase 
-            their projects and innovative ideas.
-        </p>
+
+    <!-- Image Grid -->
+    <div class="row g-4">
+        <!-- First Image -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/online-learning.jpg') }}" class="card-img-top" alt="Online Learning">
+                <div class="card-body">
+                    <h5 class="card-title">The Rise of Online Learning</h5>
+                    <p class="card-text">Online education became a vital part of learning after the pandemic. Learn how schools are adapting to this change.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Image -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/student-achievement.jpg') }}" class="card-img-top" alt="Student Achievement">
+                <div class="card-body">
+                    <h5 class="card-title">Celebrating Student Achievements</h5>
+                    <p class="card-text">A look into the accomplishments of students in various fields this year.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Image -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/teacher-training.jpg') }}" class="card-img-top" alt="Teacher Training">
+                <div class="card-body">
+                    <h5 class="card-title">Empowering Teachers</h5>
+                    <p class="card-text">Discover new training programs designed to enhance teaching methodologies.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
