@@ -215,3 +215,6 @@ def upload():
             return redirect(url_for('teacher_dashboard'))
 
     return render_template('upload.html')
+from flask_migrate import Migrate
+
+migrate = Migrate(app, db)
