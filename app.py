@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from urllib.parse import quote as url_quote  # Fix for deprecated Werkzeug import
 
 # Initialize the Flask app
 app = Flask(__name__)
@@ -129,16 +130,7 @@ def parent_dashboard():
     flash('Unauthorized access.', 'danger')
     return redirect(url_for('login'))
 
-# Debugging: Print all routes
-with app.test_request_context():
-    print(app.url_map)
-
-# Run the app
-import os
-
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+# Additional routes
 @app.route('/actualities')
 def actualities():
     return render_template('actualities.html')
@@ -154,3 +146,12 @@ def about():
 @app.route('/support')
 def support():
     return render_template('support.html')
+
+# Debugging: Print all routes
+with app.test_request_context():
+    print(app.url_map)
+
+# Run the app
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
